@@ -1,0 +1,13 @@
+{
+  "id": "GGBT",
+  "name": "GGBalatro",
+  "author": ["Waspsting"],
+  "description": "Adds a couple of Guilty Gear characters as jokers!",
+  "prefix": "ggbt",
+  "main_file": "GGBalatro.lua",
+  "badge_colour": "b71719",
+  "version": "1.0.0",
+  "dependencies": [
+    "Steamodded (>=1.0.0~ALPHA-1225a)"
+  ]
+}
