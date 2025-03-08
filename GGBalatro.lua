@@ -18,7 +18,7 @@ SMODS.Atlas {
 	-- Key for code to find it with
 	key = "GGBalatro",
 	-- The name of the file, for the code to pull the atlas from
-	path = "ModdedVanilla.png",
+	path = "placeholder.png",
 	-- Width of each sprite in 1x size
 	px = 71,
 	-- Height of each sprite in 1x size
@@ -28,10 +28,10 @@ SMODS.Atlas {
 
 SMODS.Joker {
 	-- How the code refers to the joker.
-	key = 'testjimbo',
+	key = 'john',
 	-- loc_text is the actual name and description that show in-game for the card.
 	loc_txt = {
-		name = 'Test Jimbo',
+		name = 'John',
 		text = {
 			"{C:mult}+#1# {} Mult"
 		}
