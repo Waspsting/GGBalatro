@@ -20,7 +20,7 @@ SMODS.Atlas { --spells
   key = "Spell_at",
   path = "spells.png",
   px = 65,
-  py = 96
+  py = 92
 }
 
 SMODS.Rarity {
@@ -31,3 +31,29 @@ SMODS.Rarity {
   badge_colour = HEX("b71719")
 }
 
+SMODS.Atlas {
+  key = "axl_at",
+  path = "axl.png",
+  px = 71,
+  py = 95
+}
+
+SMODS.Consumable {
+  key = "gear",
+  set = 'Spectral',
+  loc_txt = {
+    name = "Gear",
+    text = { "Quite guilty" }
+  },
+  cost = 999,
+  atlas = 'GGBalatro',
+  pos = { x = 0, y = 0},
+  can_use = function(self, card)
+    return true
+  end,
+  use = function(self, card, area)
+    G.E_MANAGER:add_event(Event({
+      SMODS.add_card{ set = 'Joker', rarity = 'ggbt_blazing'}
+    }))
+  end
+}

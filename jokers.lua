@@ -7,12 +7,12 @@ SMODS.Joker { --Asuka
   config = { extra = {} },
   atlas = 'asuka',
   pos = { x = 0, y = 0},
-  rarity = 'ggbt_blazing',
+  rarity = 4,
   cost = 999,
   calculate = function(self, card, context)
     if context.setting_blind then
       G.E_MANAGER:add_event(Event({
-        SMODS.add_card {set = "Tarot", key = 'c_ggbt_howling_metron', area = G.consumables } 
+        SMODS.add_card {set = "spells", area = G.consumables } 
       }))
     end
   end
@@ -39,5 +39,21 @@ SMODS.Joker { --Faust
         SMODS.add_card { set = '', area = G.consumables, soulable = true, edition = 'e_negative' } 
       }))
     end
+  end
+}
+
+SMODS.Joker {
+  key = 'axl',
+  loc_txt = {
+    name = 'Axl Low',
+    text = {"WHAT DOES HE EVEN {C:mult}DO?{}"}
+  },
+  config = { extra = {} },
+  atlas = 'axl_at',
+  pos = { x = 0, y = 0},
+  rarity = 'ggbt_blazing',
+  cost = 999,
+  calculate = function(self, card, context)
+
   end
 }
