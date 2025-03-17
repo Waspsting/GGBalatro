@@ -54,6 +54,18 @@ SMODS.Joker {
   rarity = 'ggbt_blazing',
   cost = 999,
   calculate = function(self, card, context)
-
+    if context.setting_blind then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.3,
+        blockable = false,
+        func = function()
+          G.jokers:remove_card(card)
+          card:remove()
+          card = nil
+          return true;
+        end
+      }))
+    end
   end
 }
