@@ -7,12 +7,12 @@ SMODS.Joker { --Asuka
   config = { extra = {} },
   atlas = 'asuka',
   pos = { x = 0, y = 0},
-  rarity = 4,
+  rarity = 'ggbt_blazing',
   cost = 999,
   calculate = function(self, card, context)
     if context.setting_blind then
       G.E_MANAGER:add_event(Event({
-        SMODS.add_card {set = "spells", area = G.consumables } 
+        SMODS.add_card {key = "c_ggbt_howling_metron", set = "spells", area = G.consumables } 
       }))
     end
   end

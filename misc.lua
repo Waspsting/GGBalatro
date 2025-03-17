@@ -57,3 +57,17 @@ SMODS.Consumable {
     }))
   end
 }
+
+SMODS.Back{
+    name = "Blazing Deck",
+    key = "ggdeck",
+    atlas = 'GGBalatro',
+    pos = {x = 0, y = 0},
+    config = {consumables = {'c_ggbt_gear'}},
+    loc_txt = {
+        name = "Blazing Deck",
+        text = {
+            "Start with a {C:mult}Gear{} card"
+        },
+    },
+}

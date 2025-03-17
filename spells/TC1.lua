@@ -109,7 +109,8 @@ SMODS.Consumable {
   key = 'TC1_fast_staff',
   set = 'TC1',
   loc_txt = {
-    name = 'Shooting Time Stretch (Accelerate)'
+    name = 'Shooting Time Stretch (Accelerate)',
+    text = {"not cube"}
   },
   cost = 999,
   atlas = 'Spell_at',
