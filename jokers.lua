@@ -70,36 +70,4 @@ SMODS.Joker {
   end
 }
 
-SMODS.Joker {
-  key = 'ky',
-  loc_txt = {
-    name = 'Ky Kiske',
-    text = {"{X:chips,C:white}X#1#{}"}
-  },
-  config = { extra = { Xchip = 1, Xchip_gain = 0.5 } },
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.Xchip, card.ability.extra.chip_gain } }
-	end,
-  atlas = 'GGBalatro',
-  pos = { x = 0, y = 0},
-  rarity = 'ggbt_blazing',
-  cost = 999,
-  calculate = function(self, card, context)
-    if context.joker_main then
-      return {
-				message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.extra.Xchip } },
-				Xchip_mod = card.ability.extra.Xchip
-			}
-    end
-    if context.before and next(context.poker_hands['Three of a Kind']) and not context.blueprint then
-			card.ability.extra.Xchip = card.ability.extra.Xchip + card.ability.extra.Xchip_gain
-			return {
-				message = 'Upgraded!',
-				colour = G.C.CHIPS,
-				card = card
-			}
-		end
-  end
-}
-
 
