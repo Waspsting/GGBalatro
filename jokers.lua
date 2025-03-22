@@ -70,4 +70,51 @@ SMODS.Joker {
   end
 }
 
+SMODS.Joker {
+  key = 'ky',
+  loc_txt = {
+    name = 'Ky Kiske',
+    text = {
+      "Gains {X:chips,C:white}X0.5{} Chips if",
+      "played hand contains",
+      "exactly {C:attention}3 Kings{}",
+      "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"
+    }
+  },
+  config = { extra = { Xchip = 1, Xchip_gain = 0.5 } },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.Xchip, card.ability.extra.chip_gain } }
+  end,
+  atlas = 'GGBalatro',
+  pos = { x = 0, y = 0},
+  rarity = 'ggbt_blazing',
+  cost = 999,
+  calculate = function(self, card, context)
+    if context.joker_main then
+      if card.ability.extra.Xchip > 1 then
+        return {
+          message = localize { type = 'variable', key= 'a_xchips', vars = { card.ability.extra.Xchip } },
+          Xchip_mod = card.ability.extra.Xchip
+        }
+      end
+    end
+    if context.before and not context.blueprint then
+      local count = 0
+      for _, _card in pairs(G.play.cards) do
+        if _card:get_id() == 13 then
+          count = count + 1
+        end
+      end
+      if count == 3 then
+        card.ability.extra.Xchip = card.ability.extra.Xchip + card.ability.extra.Xchip_gain
+        return {
+          message = "Upgraded!", -- Second message doesnt show
+          colour = G.C.CHIPS,
+          card = card
+        } 
+      end
+    end
+  end
+}
+
 
