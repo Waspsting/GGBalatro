@@ -93,7 +93,7 @@ SMODS.Joker {
     if context.joker_main then
       if card.ability.extra.Xchip > 1 then
         return {
-          message = localize { type = 'variable', key= 'a_xchip', vars = { card.ability.extra.Xchip } },
+          message = localize { type = 'variable', key= 'a_xchips', vars = { card.ability.extra.Xchip } },
           Xchip_mod = card.ability.extra.Xchip
         }
       end
