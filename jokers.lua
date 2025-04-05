@@ -23,21 +23,41 @@ SMODS.Joker { --Faust
   loc_txt = {
     name = 'Faust',
     text = {
-      "When {C:attention}blind{} is selected,",
-      "create a random {C:attention}Faust item{}",
-      "{C:attention}consumable{} card"
+      "When {C:attention}hand{} is played",
+      "{C:green}#1# in #2#{} chance to create a {C:dark_edition}Negative{} {C:tarot}Tarot{} card",
+      "{C:green}#1# in #3#{} chance to create a {C:dark_edition}Negative{} {C:planet}Planet{} card",
+      "{C:green}#1# in #4#{} chance to create a {C:dark_edition}Negative{} {C:spectral}Spectral{} card",
+      "{C:green}#1# in #6#{} chance to create a {C:dark_edition}Negative{} {C:money}Banana{} card",
+      "{C:green}#1# in #5#{} chance to add a {C:attention}Stone{} card with a seal to deck"
     }
   },
-  config = { extra = {} },
+  config = { extra = { odda = 2, oddb = 10, oddc = 15, oddd = 20, odde = 25} },
   atlas = 'GGBalatro',
   pos = { x = 0, y = 0},
   rarity = "ggbt_blazing",
   cost = 999,
+  loc_vars = function (self, info_queue, card)
+    return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odda, card.ability.extra.oddb, card.ability.extra.oddc, card.ability.extra.oddd, card.ability.extra.odde } }
+  end,
   calculate = function(self, card, context)
-    if context.setting_blind then
-      G.E_MANAGER:add_event(Event({
-        SMODS.add_card { set = '', area = G.consumables, soulable = true, edition = 'e_negative' } 
-      }))
+    if context.before then
+      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.odda then
+        SMODS.add_card {set = "Tarot", edition = "e_negative"}
+      end
+      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.odda then
+        SMODS.add_card {set = "Planet", edition = "e_negative"}
+      end
+      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.odda then
+        SMODS.add_card {set = "Spectral", edition = "e_negative"}
+      end
+      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.odda then
+        if G.GAME.pool_flags.gros_michel_extinct == true then 
+          SMODS.add_card {key = 'j_cavendish', edition = "e_negative"}
+        else
+          SMODS.add_card {key = 'j_gros_michel', edition = "e_negative"}
+        end
+      end
+
     end
   end
 }
