@@ -27,11 +27,11 @@ SMODS.Joker { --Faust
       "{C:green}#1# in #2#{} chance to create a {C:dark_edition}Negative{} {C:tarot}Tarot{} card",
       "{C:green}#1# in #3#{} chance to create a {C:dark_edition}Negative{} {C:planet}Planet{} card",
       "{C:green}#1# in #4#{} chance to create a {C:dark_edition}Negative{} {C:spectral}Spectral{} card",
-      "{C:green}#1# in #6#{} chance to create a {C:dark_edition}Negative{} {C:money}Banana{} card",
-      "{C:green}#1# in #5#{} chance to add a {C:attention}Stone{} card with a seal to deck"
+      "{C:green}#1# in #5#{} chance to create a {C:dark_edition}Negative{} {C:money}Banana{} card",
+      "{C:green}#1# in #6#{} chance to create a {C:dark_edition}Negative{} {C:green}Oops all 6s{}"
     }
   },
-  config = { extra = { odda = 2, oddb = 10, oddc = 15, oddd = 20, odde = 25} },
+  config = { extra = { odda = 2, oddb = 2, oddc = 6, oddd = 20, odde = 80} },
   atlas = 'GGBalatro',
   pos = { x = 0, y = 0},
   rarity = "ggbt_blazing",
@@ -44,20 +44,22 @@ SMODS.Joker { --Faust
       if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.odda then
         SMODS.add_card {set = "Tarot", edition = "e_negative"}
       end
-      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.odda then
+      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.oddb then
         SMODS.add_card {set = "Planet", edition = "e_negative"}
       end
-      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.odda then
+      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.oddc then
         SMODS.add_card {set = "Spectral", edition = "e_negative"}
       end
-      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.odda then
+      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.oddd then
         if G.GAME.pool_flags.gros_michel_extinct == true then 
           SMODS.add_card {key = 'j_cavendish', edition = "e_negative"}
         else
           SMODS.add_card {key = 'j_gros_michel', edition = "e_negative"}
         end
       end
-
+      if pseudorandom('faust') < G.GAME.probabilities.normal / card.ability.extra.odde then
+        SMODS.add_card {key = 'j_oops', edition = "e_negative"}
+      end
     end
   end
 }
